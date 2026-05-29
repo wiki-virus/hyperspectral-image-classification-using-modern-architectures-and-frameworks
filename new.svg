@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" width="880" height="440" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 6" refX="10" refY="3" markerWidth="8" markerHeight="5" orient="auto">
+      <path d="M0,0 L10,3 L0,6 Z" fill="#555"/>
+    </marker>
+    <marker id="s" viewBox="0 0 10 6" refX="10" refY="3" markerWidth="8" markerHeight="5" orient="auto">
+      <path d="M0,0 L10,3 L0,6 Z" fill="#999"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="440" fill="#fff"/>
+
+  <!-- ================================================================ -->
+  <!-- TOP: Mamba Block Detail (blue dashed box)                        -->
+  <!-- ================================================================ -->
+  <rect x="88" y="12" width="700" height="190" rx="10" fill="#EDF4FC" stroke="#90B4DE" stroke-width="1.4" stroke-dasharray="6,3"/>
+  <text x="438" y="30" text-anchor="middle" font-size="10" font-weight="bold" fill="#37474F">Mamba Block</text>
+
+  <!-- Residual skip path (y=44) -->
+  <line x1="110" y1="107" x2="110" y2="44" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="110" y1="44" x2="670" y2="44" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="670" y1="44" x2="670" y2="95" stroke="#999" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#s)"/>
+  <text x="390" y="39" text-anchor="middle" font-size="7" fill="#999">Residual Skip</text>
+
+  <!-- x input -->
+  <text x="103" y="114" text-anchor="middle" font-size="9" font-weight="bold" fill="#444">x</text>
+  <line x1="112" y1="110" x2="148" y2="110" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- in_proj (Linear) -->
+  <rect x="151" y="97" width="68" height="26" rx="5" fill="#FFFDE7" stroke="#F9A825" stroke-width="1"/>
+  <text x="185" y="114" text-anchor="middle" font-size="8" font-weight="bold" fill="#F57F17">Linear Proj.</text>
+
+  <!-- Arrow to split -->
+  <line x1="219" y1="110" x2="248" y2="110" stroke="#555" stroke-width="1"/>
+
+  <!-- === TOP BRANCH (SSM, y=68) === -->
+  <line x1="248" y1="110" x2="248" y2="68" stroke="#555" stroke-width="1"/>
+  <line x1="248" y1="68" x2="280" y2="68" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- Conv 1D -->
+  <rect x="283" y="55" width="60" height="26" rx="5" fill="#BBDEFB" stroke="#42A5F5" stroke-width="1"/>
+  <text x="313" y="72" text-anchor="middle" font-size="8" font-weight="bold" fill="#1565C0">Conv 1D</text>
+
+  <line x1="343" y1="68" x2="378" y2="68" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- SSM Block -->
+  <rect x="381" y="52" width="108" height="32" rx="5" fill="#FFF3E0" stroke="#FB8C00" stroke-width="1"/>
+  <text x="435" y="65" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#E65100">Selective Scan</text>
+  <text x="435" y="78" text-anchor="middle" font-size="7" fill="#888">(SSM)</text>
+
+  <!-- Arrow down to multiply -->
+  <line x1="489" y1="68" x2="522" y2="68" stroke="#555" stroke-width="1"/>
+  <line x1="522" y1="68" x2="522" y2="98" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- === BOTTOM BRANCH (Gate, y=160) === -->
+  <line x1="248" y1="110" x2="248" y2="160" stroke="#555" stroke-width="1"/>
+  <line x1="248" y1="160" x2="305" y2="160" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- SiLU -->
+  <rect x="308" y="147" width="48" height="26" rx="5" fill="#FCE4EC" stroke="#E91E63" stroke-width="1"/>
+  <text x="332" y="164" text-anchor="middle" font-size="8" font-weight="bold" fill="#C2185B">SiLU</text>
+
+  <!-- Line up to multiply -->
+  <line x1="356" y1="160" x2="522" y2="160" stroke="#555" stroke-width="1"/>
+  <line x1="522" y1="160" x2="522" y2="122" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- Multiply gate circle -->
+  <circle cx="522" cy="110" r="12" fill="#E0F7FA" stroke="#00897B" stroke-width="1.2"/>
+  <text x="522" y="115" text-anchor="middle" font-size="12" font-weight="bold" fill="#00695C">x</text>
+
+  <!-- Arrow to out_proj -->
+  <line x1="534" y1="110" x2="565" y2="110" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- out_proj (Linear) -->
+  <rect x="568" y="97" width="72" height="26" rx="5" fill="#FFFDE7" stroke="#F9A825" stroke-width="1"/>
+  <text x="604" y="114" text-anchor="middle" font-size="8" font-weight="bold" fill="#F57F17">Output Proj.</text>
+
+  <!-- Arrow to Add -->
+  <line x1="640" y1="110" x2="658" y2="110" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- Add circle (residual merge) -->
+  <circle cx="670" cy="110" r="12" fill="#E8F5E9" stroke="#43A047" stroke-width="1.2"/>
+  <text x="670" y="115" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">+</text>
+
+  <!-- Arrow to y -->
+  <line x1="682" y1="110" x2="712" y2="110" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+  <text x="722" y="114" text-anchor="middle" font-size="9" font-weight="bold" fill="#444">y</text>
+
+  <!-- ================================================================ -->
+  <!-- ZOOM CONNECTOR LINES                                             -->
+  <!-- ================================================================ -->
+  <line x1="308" y1="320" x2="88" y2="202" stroke="#BDBDBD" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <line x1="380" y1="320" x2="788" y2="202" stroke="#BDBDBD" stroke-width="0.8" stroke-dasharray="4,3"/>
+
+  <!-- ================================================================ -->
+  <!-- BOTTOM: Main Encoder Flow (gray dashed box)                      -->
+  <!-- ================================================================ -->
+  <rect x="22" y="302" width="836" height="68" rx="8" fill="#F5F5F5" stroke="#BDBDBD" stroke-width="1.2" stroke-dasharray="6,3"/>
+
+  <!-- 1. Input -->
+  <rect x="40" y="323" width="48" height="26" rx="5" fill="#C8E6C9" stroke="#66BB6A" stroke-width="1"/>
+  <text x="64" y="340" text-anchor="middle" font-size="8" font-weight="bold" fill="#2E7D32">Input</text>
+  <line x1="88" y1="336" x2="115" y2="336" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- 2. Conv 1D -->
+  <rect x="118" y="323" width="55" height="26" rx="5" fill="#BBDEFB" stroke="#42A5F5" stroke-width="1"/>
+  <text x="145" y="340" text-anchor="middle" font-size="8" font-weight="bold" fill="#1565C0">Conv 1D</text>
+  <line x1="173" y1="336" x2="208" y2="336" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+  <text x="190" y="329" text-anchor="middle" font-size="5.5" fill="#888">MaxPool, LN</text>
+
+  <!-- 3. Conv 1D -->
+  <rect x="211" y="323" width="55" height="26" rx="5" fill="#BBDEFB" stroke="#42A5F5" stroke-width="1"/>
+  <text x="238" y="340" text-anchor="middle" font-size="8" font-weight="bold" fill="#1565C0">Conv 1D</text>
+  <line x1="266" y1="336" x2="305" y2="336" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+  <text x="285" y="329" text-anchor="middle" font-size="5.5" fill="#888">MaxPool, LN</text>
+
+  <!-- 4. Mamba Block (highlighted) -->
+  <rect x="308" y="320" width="72" height="32" rx="5" fill="#FFF3E0" stroke="#FB8C00" stroke-width="1.4"/>
+  <text x="344" y="335" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#E65100">Mamba</text>
+  <text x="344" y="347" text-anchor="middle" font-size="7" font-weight="bold" fill="#E65100">Block</text>
+  <line x1="380" y1="336" x2="420" y2="336" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+  <text x="400" y="329" text-anchor="middle" font-size="5.5" fill="#888">LN</text>
+
+  <!-- 5. Conv 1D -->
+  <rect x="423" y="323" width="55" height="26" rx="5" fill="#BBDEFB" stroke="#42A5F5" stroke-width="1"/>
+  <text x="450" y="340" text-anchor="middle" font-size="8" font-weight="bold" fill="#1565C0">Conv 1D</text>
+  <line x1="478" y1="336" x2="528" y2="336" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+  <text x="503" y="329" text-anchor="middle" font-size="5.5" fill="#888">MaxPool, Flatten</text>
+
+  <!-- 6. FC Layer -->
+  <rect x="531" y="323" width="52" height="26" rx="5" fill="#F3E5F5" stroke="#AB47BC" stroke-width="1"/>
+  <text x="557" y="340" text-anchor="middle" font-size="8" font-weight="bold" fill="#7B1FA2">FC Layer</text>
+  <line x1="583" y1="336" x2="610" y2="336" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- 7. FC Layer -->
+  <rect x="613" y="323" width="52" height="26" rx="5" fill="#F3E5F5" stroke="#AB47BC" stroke-width="1"/>
+  <text x="639" y="340" text-anchor="middle" font-size="8" font-weight="bold" fill="#7B1FA2">FC Layer</text>
+  <line x1="665" y1="336" x2="695" y2="336" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+
+  <!-- 8. Embedding -->
+  <rect x="698" y="323" width="70" height="26" rx="5" fill="#C8E6C9" stroke="#66BB6A" stroke-width="1"/>
+  <text x="733" y="340" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#2E7D32">Embedding</text>
+
+  <!-- Label below flow -->
+  <text x="440" y="390" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#555">CNN + Mamba Encoder</text>
+
+  <!-- ================================================================ -->
+  <!-- LEGEND                                                           -->
+  <!-- ================================================================ -->
+  <text x="60" y="418" font-size="7" fill="#888">LN = LayerNorm</text>
+  <line x1="200" y1="415" x2="225" y2="415" stroke="#999" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="232" y="418" font-size="7" fill="#888">= Residual Skip</text>
+  <line x1="355" y1="415" x2="380" y2="415" stroke="#555" stroke-width="1" marker-end="url(#a)"/>
+  <text x="387" y="418" font-size="7" fill="#888">= Data flow</text>
+  <text x="490" y="418" font-size="7" fill="#888">x = Element-wise multiply</text>
+  <text x="660" y="418" font-size="7" fill="#888">+ = Residual add</text>
+
+</svg>
