@@ -138,3 +138,4 @@ mamba_tuning/
 ~$*
 credentials.json
 token.json
+upload_to_hf.py
